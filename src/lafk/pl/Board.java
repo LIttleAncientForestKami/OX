@@ -1,5 +1,7 @@
 package lafk.pl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -7,9 +9,11 @@ import java.util.Scanner;
  */
 public class Board {
     private final BoardSize boardSize;
+    private final FieldsList fields;
 
     public Board(BoardSize boardSize) {
         this.boardSize = boardSize;
+        this.fields = new FieldsList(boardSize);
     }
 
     public Board placeO() {
@@ -19,22 +23,13 @@ public class Board {
     private Board place(Sign sign) {
         Scanner s = new Scanner(System.in);
         System.out.println("Field number <1-9>, 5 being the middle, (0 someday will quit)?");
-        this.field(s.nextInt()).is(sign);
+        fields.updateField(s.nextInt()).with(sign);
         s.close();
         return this;
     }
 
-    private Field field(int fieldNumber) {
-        return new Field(fieldNumber);
-    }
-
     @Override
     public String toString() {
-
-        return "1 | 2 | 3" +
-                "---------" +
-                "4 | 5 | 6" +
-                "---------" +
-                "7 | 8 | 9";
+        return fields.toString();
     }
 }

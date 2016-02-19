@@ -9,7 +9,6 @@ public class Game {
     private Board board;
 
     public Game(BoardSize boardSize, WinningSeqLength winningSeqLength) {
-
         this.boardSize = boardSize;
         this.winningSeqLength = winningSeqLength;
     }
@@ -20,7 +19,6 @@ public class Game {
         System.out.println(board);
         return this;
     }
-
 
     public Game playO() {
         board.placeO();

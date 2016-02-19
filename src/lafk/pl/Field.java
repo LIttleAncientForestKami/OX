@@ -6,14 +6,17 @@ package lafk.pl;
 public class Field {
     private final int fieldNumber;
     private Sign sign;
-    private boolean taken = false;
 
     public Field(int fieldNumber) {
         this.fieldNumber = fieldNumber;
     }
 
-    public void is(Sign sign) {
+    public void with(Sign sign) {
         this.sign = sign;
-        this.taken = true;
     }
+
+    public String toString() {
+        return (sign != null) ? sign.toString() : String.valueOf(fieldNumber);
+    }
+
 }

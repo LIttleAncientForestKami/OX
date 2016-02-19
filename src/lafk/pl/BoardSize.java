@@ -10,4 +10,7 @@ public class BoardSize {
         this.dimension = dimension;
     }
 
+    public int value() {
+        return dimension;
+    }
 }
