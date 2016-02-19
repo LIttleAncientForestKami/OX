@@ -19,18 +19,18 @@ public class FieldsList {
 
     private void initializeFields() {
         for (int i = 1; i <= max*max; i++) {
-            fields.add(updateField(i));
+            fields.add(new EmptyField(i));
         }
     }
 
-    public Field updateField(int fieldNumber) {
-        return new Field(fieldNumber);
+    public FieldsList addOField(int fieldNumber) {
+        fields.set(fieldNumber, new OField());
+        return this;
     }
 
     @Override
     public String toString() {
         return fields.toString();
     }
-
 
 }

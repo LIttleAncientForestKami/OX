@@ -17,13 +17,9 @@ public class Board {
     }
 
     public Board placeO() {
-        return this.place(Sign.O);
-    }
-
-    private Board place(Sign sign) {
         Scanner s = new Scanner(System.in);
-        System.out.println("Field number <1-9>, 5 being the middle, (0 someday will quit)?");
-        fields.updateField(s.nextInt()).with(sign);
+        System.out.println("Place "+ Sign.O +" Fields numbered <1-9>, 5 being the middle, (0 someday will quit)?");
+        fields.addOField(s.nextInt()-1);
         s.close();
         return this;
     }
