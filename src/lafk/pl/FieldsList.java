@@ -35,7 +35,20 @@ public class FieldsList {
 
     @Override
     public String toString() {
-        return fields.toString();
+        StringBuilder sb = new StringBuilder();
+        for (int j = 0; j < max; j++) {
+            for (int i = 0; i < max; i++) {
+                if (i == max - 1) {
+                    sb.append(fields.get(i+j*max).toString());
+                    sb.append(System.lineSeparator());
+                }
+                else
+                    sb.append(fields.get(i+j*max).toString() + " | ");
+            }
+            if (j == max - 1) {continue;}
+            sb.append("--+---+--");
+            sb.append(System.lineSeparator());
+        }
+        return sb.toString();
     }
-
 }

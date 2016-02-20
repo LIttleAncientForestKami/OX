@@ -6,7 +6,15 @@ public class Main {
         Game game = new Game(new BoardSize(3), new WinningSeqLength(3));
         game.start()
             .playO()
-            .playX();
+            .playX()
+            .playO()
+            .playX()
+            .playO()
+            .playX()
+            .playO()
+            .playX()
+            .playO()
+            .end();
 
     }
 }
