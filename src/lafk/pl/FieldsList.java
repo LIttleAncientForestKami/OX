@@ -28,6 +28,11 @@ public class FieldsList {
         return this;
     }
 
+    public FieldsList addXField(int fieldNumber) {
+        fields.set(fieldNumber, new XField());
+        return this;
+    }
+
     @Override
     public String toString() {
         return fields.toString();

@@ -25,4 +25,15 @@ public class Game {
         System.out.println(board);
         return this;
     }
+
+    public Game playX() {
+        board.placeX();
+        System.out.println(board);
+        return this;
+    }
+
+    public Game end() {
+        UserInput.closeScanner();
+        return this;
+    }
 }
