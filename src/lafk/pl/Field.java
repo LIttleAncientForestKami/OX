@@ -1,7 +1,9 @@
 package lafk.pl;
 
 /**
- * Created by tammo on 18.02.16.
+ * Higher type for all 3 subtypes of field: EMPTY, O and X.
+ *
+ * @author LAFK_pl, Tomasz.Borek@gmail.com
  */
 public interface Field {
     String toString();

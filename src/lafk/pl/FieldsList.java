@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by tammo on 19.02.16.
+ * @author LAFK_pl, Tomasz.Borek@gmail.com
  */
 public class FieldsList {
 

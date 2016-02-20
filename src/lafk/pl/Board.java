@@ -1,15 +1,12 @@
 package lafk.pl;
 
-
 /**
- * Created by tammo on 18.02.16.
+ * @author LAFK_pl, Tomasz.Borek@gmail.com
  */
 public class Board {
-    private final BoardSize boardSize;
     private final FieldsList fields;
 
     public Board(BoardSize boardSize) {
-        this.boardSize = boardSize;
         this.fields = new FieldsList(boardSize);
     }
 

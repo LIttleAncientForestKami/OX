@@ -1,7 +1,7 @@
 package lafk.pl;
 
 /**
- * Created by tammo on 18.02.16.
+ * @author LAFK_pl, Tomasz.Borek@gmail.com
  */
 public class Game {
     private final BoardSize boardSize;
