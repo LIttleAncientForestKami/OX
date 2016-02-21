@@ -1,36 +1,54 @@
 package lafk.pl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author LAFK_pl, Tomasz.Borek@gmail.com
  */
 public class Board {
-    private final FieldsList fields;
+
+    private final List<Field> fields;
+    private final int max;
 
     public Board(BoardSize boardSize) {
-        this.fields = new FieldsList(boardSize);
+        this.max = boardSize.value();
+        this.fields = new ArrayList<Field>(max*max);
+        initializeFields();
     }
 
-    public Board placeO() {
-        return placeWhereUserPoints(Sign.O);
-    }
-
-    private Board placeWhereUserPoints(Sign sign) {
-        System.out.println("Place " + sign + "! Fields numbered <1-9>, 5 being the middle, (0 someday will quit)?");
-        int chosenFieldNumber = UserInput.askWhichField() - 1;
-        switch (sign) {
-            case O: fields.addOField(chosenFieldNumber); break;
-            case X: fields.addXField(chosenFieldNumber); break;
+    private void initializeFields() {
+        for (int i = 1; i <= max*max; i++) {
+            fields.add(new EmptyField(i));
         }
+    }
+
+    public Board addOField(int fieldNumber) {
+        fields.set(fieldNumber, new OField());
         return this;
     }
 
-    public Board placeX() {
-        return placeWhereUserPoints(Sign.X);
+    public Board addXField(int fieldNumber) {
+        fields.set(fieldNumber, new XField());
+        return this;
     }
 
     @Override
     public String toString() {
-        return fields.toString();
+        StringBuilder sb = new StringBuilder();
+        for (int j = 0; j < max; j++) {
+            for (int i = 0; i < max; i++) {
+                if (i == max - 1) {
+                    sb.append(fields.get(i+j*max).toString());
+                    sb.append(System.lineSeparator());
+                }
+                else
+                    sb.append(fields.get(i+j*max).toString() + " | ");
+            }
+            if (j == max - 1) {continue;}
+            sb.append("--+---+--");
+            sb.append(System.lineSeparator());
+        }
+        return sb.toString();
     }
-
 }
