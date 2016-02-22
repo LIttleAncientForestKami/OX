@@ -29,15 +29,23 @@ public class Game {
     }
 
     private Board placeWhereUserPoints(Sign sign) {
-        System.out.println("Place " + sign + "! Fields numbered <1-9>, 5 being the middle, (0 someday will quit)?");
-        int chosenFieldNumber = UserInput.askWhichField() - 1;
+        System.out.println("Place " + sign + "! Fields numbered <1-9>, 5 being the middle, 0 quits");
+        int chosenFieldNumber = UserInput.askWhichField();
+        // TODO: move sysexit and conversion to proper places!
+        if (chosenFieldNumber == 0) {
+            System.out.println("Exiting, per user "+ sign + " command");
+            System.exit(0);
+        } else chosenFieldNumber -= 1; // convert from field number to field index
         switch (sign) {
-            case O: board.addOField(chosenFieldNumber); Arbiter.didOWinWithField(chosenFieldNumber); break;
+            case O: board.addOField(chosenFieldNumber);
+                if (arbiter.didOWinWithField(new FieldNumber(chosenFieldNumber))) {
+                    System.out.println("O won");
+                }
+                    break;
             case X: board.addXField(chosenFieldNumber); break;
         }
         return board;
     }
-
 
     public Game playX() {
         board = placeWhereUserPoints(Sign.X);
